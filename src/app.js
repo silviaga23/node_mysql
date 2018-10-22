@@ -9,7 +9,6 @@ const app = express();
 const customerRoutes = require('./routes/customer');
 
 
-
 //settings 
 //express por
 app.set('port',process.env.PORT || 3000);
@@ -26,6 +25,8 @@ app.use(myConnection(mysql, {
 	port: '3306',
 	database: 'crud_node_mysql'
 }, 'single'));
+
+app.use(express.urlencoded({extended: false}));
 
 //routes
 app.use('/',customerRoutes);
